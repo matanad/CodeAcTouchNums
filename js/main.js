@@ -16,38 +16,45 @@ function onInit() {
     gCurrNum = 0
     gBoard = createNumsdBoard()
     renderBoard()
-}
-
-function play() {
-    onInit()
     gIsGameOn = true
 }
 
 function cellClicked(elCell, i, j) {
     if (!gIsGameOn) return
-    if(!gBoard[i][j].isClicked)
+    if (gBoard[i][j].isClicked) return
     var num = +elCell.innerText
+    if (gCurrNum === num) victory()
     if (num === gCurrNum + 1) {
         gBoard[i][j].isClicked = true
         elCell.classList.add('clicked')
         gCurrNum++
+    } else {
+        elCell.classList += ('wrong')
+        setTimeout(() => {
+            elCell.classList.remove('wrong')
+        }, 500);
     }
 
 }
 
+function victory() {
+    gIsGameOn = false
+    
+}
+
 function onDiffClicked(elLi, diff) {
     gNumsLenght = diff
-    if(diff === 16){
+    if (diff === 16) {
         gBoardSzie = 4
-    }else if(diff === 25){
+    } else if (diff === 25) {
         gBoardSzie = 5
-    }else{
+    } else {
         gBoardSzie = 6
     }
     gDefaultLi.classList.remove('active')
     gDefaultLi = elLi
     elLi.classList.add('active')
-    play()
+    onInit()
 }
 
 function renderBoard() {

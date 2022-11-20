@@ -69,6 +69,7 @@ td {
     height: 40px;
     border-radius: 10px;
     padding: 5px;
+    transition: .3s;
 }
 
 .clicked {
@@ -107,4 +108,17 @@ button:active {
     background-color: #2a5d80;
     box-shadow: 0 5px rgb(84, 103, 110);
     transform: translateY(4px);
+}
+
+.wrong{
+    background-color: #b43434;
+    
+}
+
+.wrong:hover{
+    background-color: #b43434;
+}
+
+.wrong:active{
+    background-color: #b43434;
 }
